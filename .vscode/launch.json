@@ -1,0 +1,63 @@
+// {
+//     // Use IntelliSense to learn about possible attributes.
+//     // Hover to view descriptions of existing attributes.
+//     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "type": "rdbg",
+//             "name": "Debug current file with rdbg",
+//             "request": "launch",
+//             "script": "${file}",
+//             "args": [],
+//             "askParameters": true
+//         },
+//         {
+//             "type": "rdbg",
+//             "name": "Attach with rdbg",
+//             "request": "attach"
+//         }
+//     ]
+// }
+
+// Gemini code//
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+
+//         {
+//             "type": "rdbg",
+//             "name": "Debug my Ruby script",
+//             "request": "launch",
+//             "script": "/Users/app/Documents/FlutterProjects/ug_chat_app/path/to/your/ruby_script.rb",
+//             "args": [],
+//             "askParameters": false
+//         }
+//     ]
+// }
+//.....................Chat gpt code......................//
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "rdbg",
+            "name": "Debug current file with rdbg",
+            "request": "launch",
+            "script": "${file}",
+            "args": [],
+            "askParameters": true,
+            "cwd": "${workspaceFolder}",  // Ensure correct working directory
+            "showDebuggerOutput": true,  // Optional: To show more output in the Debug Console
+            "useBundler": true  // If you are using Bundler to manage Ruby gems
+        },
+        {
+            "type": "rdbg",
+            "name": "Attach with rdbg",
+            "request": "attach",
+            "cwd": "${workspaceFolder}"  // Same working directory to attach debugger
+        }
+    ]
+}

@@ -1,15 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ug_chat_app/views/screens/chats_screen.dart';
-import 'package:ug_chat_app/views/screens/editprofile_screen.dart';
-import 'package:ug_chat_app/views/screens/forgotpassword_screen.dart';
-import 'package:ug_chat_app/views/screens/getstarted_screenn.dart';
-import 'package:ug_chat_app/views/screens/login_screen.dart';
-import 'package:ug_chat_app/views/screens/settings_screen.dart';
+import 'package:ug_chat_app/firebase_options.dart';
 import 'package:ug_chat_app/views/screens/signin_screen.dart';
-import 'package:ug_chat_app/views/screens/write_a_msg.dart';
 
-void main() {
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: WriteAMsg(),
+      home: SigninScreen(),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ug_chat_app/views/screens/editprofile_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -10,7 +12,9 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xffDDE6E7),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            //Get.back();
+          },
           icon: Icon(
             Icons.arrow_back,
             size: 30,
@@ -24,14 +28,66 @@ class SettingsScreen extends StatelessWidget {
               PopupMenuItem(
                 child: Row(
                   children: [
+                    Image.asset(
+                      "assets/images/Forward Arrow.png",
+                      width: 40,
+                      height: 25,
+                    ),
+                    // Icon(
+                    //  Icons.download_done_sharp,
+                    //  size: 30,
+                    //  color: Colors.black,
+                    // ),
+                    SizedBox(width: 0),
+                    Text(
+                      "Share",
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff000000),
+                        fontFamily: "Roboto",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => EditprofileScreen());
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.edit,
+                        size: 25,
+                        color: Colors.black,
+                      ),
+                      SizedBox(width: 5),
+                      Text(
+                        "Edit Profile",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff000000),
+                          fontFamily: "Roboto",
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              PopupMenuItem(
+                child: Row(
+                  children: [
                     Icon(
-                      Icons.share,
-                      size: 30,
+                      Icons.block,
+                      size: 25,
                       color: Colors.black,
                     ),
                     SizedBox(width: 5),
                     Text(
-                      "Share",
+                      "Block User",
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
@@ -46,34 +102,13 @@ class SettingsScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.share,
-                      size: 30,
+                      Icons.dock_outlined,
+                      size: 25,
                       color: Colors.black,
                     ),
                     SizedBox(width: 5),
                     Text(
-                      "Share",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff000000),
-                        fontFamily: "Roboto",
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              PopupMenuItem(
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.share,
-                      size: 30,
-                      color: Colors.black,
-                    ),
-                    SizedBox(width: 5),
-                    Text(
-                      "Share",
+                      "Report User",
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,

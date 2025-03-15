@@ -1,17 +1,31 @@
+import 'dart:io';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ug_chat_app/custom_text_field.dart';
 import 'package:ug_chat_app/views/screens/login_screen.dart';
 
-class SigninScreen extends StatelessWidget {
+class SigninScreen extends StatefulWidget {
   SigninScreen({super.key});
+
+  @override
+  State<SigninScreen> createState() => _SigninScreenState();
+}
+
+class _SigninScreenState extends State<SigninScreen> {
   TextEditingController firstNameController = TextEditingController();
+
   TextEditingController lastNameController = TextEditingController();
+
   TextEditingController emailNameController = TextEditingController();
+
   TextEditingController passwordNameController = TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  XFile? pickedFile;
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +37,48 @@ class SigninScreen extends StatelessWidget {
             child: Column(
               children: [
                 Center(
-                  child: Container(
-                    margin: EdgeInsets.only(top: 70),
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Color(0xff88B2B5),
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                    child: Image.asset(
-                      "assets/images/icon.png",
-                      height: 110,
-                      width: 110,
-                    ),
+                  child: GestureDetector(
+                    onTap: () async {
+                      ImagePicker picker = ImagePicker();
+                      var pickImage =
+                          await picker.pickImage(source: ImageSource.gallery);
+                      //
+                      if (pickImage != null) {
+                        setState(() {
+                          pickedFile = pickImage;
+                        });
+                      }
+                    },
+                    child: pickedFile == null
+                        ? Container(
+                            margin: EdgeInsets.only(top: 30),
+                            padding: EdgeInsets.all(30),
+                            decoration: BoxDecoration(
+                              color: Color(0xff88B2B5),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child: Image.asset(
+                              "assets/images/icon.png",
+                              height: 80,
+                              width: 80,
+                            ),
+                          )
+                        : Container(
+                            height: 80,
+                            width: 80,
+                            margin: EdgeInsets.only(top: 30),
+                            padding: EdgeInsets.all(30),
+                            decoration: BoxDecoration(
+                              color: Color(0xff88B2B5),
+                              borderRadius: BorderRadius.circular(100),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: FileImage(
+                                  File(pickedFile!.path),
+                                ),
+                              ),
+                            ),
+                          ),
                   ),
                 ),
                 SizedBox(height: 20),
@@ -168,21 +212,17 @@ class SigninScreen extends StatelessWidget {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff1CBDC8),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 100, vertical: 12),
-                      child: Text(
-                        "Continue",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white,
-                          fontFamily: "Roboto",
-                        ),
+                        backgroundColor: Color(0xff1CBDC8),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18)),
+                        fixedSize: Size(330, 55)),
+                    child: Text(
+                      "Continue",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                        fontFamily: "Roboto",
                       ),
                     ),
                   ),
@@ -208,12 +248,10 @@ class SigninScreen extends StatelessWidget {
                             fontFamily: "Roboto",
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap=(){
-                              Get.to(()=>LoginScreen());
+                            ..onTap = () {
+                              Get.to(() => LoginScreen());
                             },
-                          
                         ),
-                        
                       ],
                     ),
                   ),
