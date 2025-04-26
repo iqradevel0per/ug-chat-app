@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "548924551409",
-    "project_id": "ug-chat-app-992b3",
-    "storage_bucket": "ug-chat-app-992b3.firebasestorage.app"
+    "project_number": "994158340091",
+    "project_id": "ug-chat-app-7a8ff",
+    "storage_bucket": "ug-chat-app-7a8ff.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:548924551409:android:c1fc743ec3d73b57a6f950",
+        "mobilesdk_app_id": "1:994158340091:android:0dd35beb0f88a480f30d5e",
         "android_client_info": {
           "package_name": "com.example.ug_chat_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB42TwMUR6vGheqyMfVPely-xdCcPLrhiM"
+          "current_key": "AIzaSyBlGqlD8Uo8zUQFlWym93zpIqG2l6o119s"
         }
       ],
       "services": {

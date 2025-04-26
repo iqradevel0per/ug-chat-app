@@ -4,7 +4,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:ug_chat_app/controllers/auth_controller.dart';
 import 'package:ug_chat_app/custom_text_field.dart';
+import 'package:ug_chat_app/views/screens/chats_screen.dart';
+import 'package:ug_chat_app/views/screens/home_screen.dart';
 import 'package:ug_chat_app/views/screens/login_screen.dart';
 
 class SigninScreen extends StatefulWidget {
@@ -15,13 +18,9 @@ class SigninScreen extends StatefulWidget {
 }
 
 class _SigninScreenState extends State<SigninScreen> {
-  TextEditingController firstNameController = TextEditingController();
-
-  TextEditingController lastNameController = TextEditingController();
-
-  TextEditingController emailNameController = TextEditingController();
-
-  TextEditingController passwordNameController = TextEditingController();
+  var controller = Get.put(
+    AuthController(),
+  );
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -52,22 +51,22 @@ class _SigninScreenState extends State<SigninScreen> {
                     child: pickedFile == null
                         ? Container(
                             margin: EdgeInsets.only(top: 30),
-                            padding: EdgeInsets.all(30),
+                            padding: EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: Color(0xff88B2B5),
                               borderRadius: BorderRadius.circular(100),
                             ),
                             child: Image.asset(
                               "assets/images/icon.png",
-                              height: 80,
-                              width: 80,
+                              height: 150,
+                              width: 150,
                             ),
                           )
                         : Container(
-                            height: 80,
-                            width: 80,
+                            height: 150,
+                            width: 150,
                             margin: EdgeInsets.only(top: 30),
-                            padding: EdgeInsets.all(30),
+                            padding: EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: Color(0xff88B2B5),
                               borderRadius: BorderRadius.circular(100),
@@ -85,7 +84,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: CustomTextField(
-                    controller: firstNameController,
+                    controller: controller.firstNameController,
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 0, vertical: 15),
                     labelText: "First Name",
@@ -104,7 +103,7 @@ class _SigninScreenState extends State<SigninScreen> {
                     cursorColor: Color(0xff88B2B5),
                     validator: (newValue) {
                       if (newValue == null || newValue.isEmpty) {
-                        return "Please enter your Email";
+                        return "Please enter your First Name";
                       } else {
                         return null;
                       }
@@ -115,7 +114,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: CustomTextField(
-                    controller: lastNameController,
+                    controller: controller.lastNameController,
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 0, vertical: 15),
                     labelText: "Last Name",
@@ -134,7 +133,7 @@ class _SigninScreenState extends State<SigninScreen> {
                     cursorColor: Color(0xff88B2B5),
                     validator: (newValue) {
                       if (newValue == null || newValue.isEmpty) {
-                        return "Please enter your Email";
+                        return "Please enter your Last Name";
                       } else {
                         return null;
                       }
@@ -145,7 +144,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: CustomTextField(
-                    controller: emailNameController,
+                    controller: controller.emailNameController,
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 0, vertical: 15),
                     labelText: "Email",
@@ -175,7 +174,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: CustomTextField(
-                    controller: passwordNameController,
+                    controller: controller.passwordNameController,
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 0, vertical: 15),
                     labelText: "Password",
@@ -204,11 +203,14 @@ class _SigninScreenState extends State<SigninScreen> {
                   ),
                 ),
                 SizedBox(height: 50),
-                Center(
-                  child: ElevatedButton(
+                ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        Get.to(() => LoginScreen());
+                        controller.SignupAccount(
+                          email: controller.emailNameController.text,
+                          password: controller.passwordNameController.text,
+                        );
+                        Get.to(() => HomeScreen());
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -216,17 +218,21 @@ class _SigninScreenState extends State<SigninScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18)),
                         fixedSize: Size(330, 55)),
-                    child: Text(
-                      "Continue",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.white,
-                        fontFamily: "Roboto",
-                      ),
-                    ),
-                  ),
-                ),
+                    child: Obx(() {
+                      return controller.isLoading.value
+                          ? CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : Text(
+                              "Continue",
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white,
+                                fontFamily: "Roboto",
+                              ),
+                            );
+                    })),
                 SizedBox(height: 15),
                 Center(
                   child: RichText(
@@ -240,7 +246,7 @@ class _SigninScreenState extends State<SigninScreen> {
                       ),
                       children: [
                         TextSpan(
-                          text: " Sign In",
+                          text: " Log In",
                           style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.w600,

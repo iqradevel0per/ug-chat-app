@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart' show Get;
+import 'package:ug_chat_app/views/screens/login_screen.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -78,9 +81,9 @@ class GetStartedScreen extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  //if (formKey.currentState!.validate()) {
-                  // Get.to(() => LoginScreen());
-                  //}
+                  // if (formKey.currentState!.validate()) {
+                  Get.to(() => LoginScreen());
+                  // }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xff1CBDC8),

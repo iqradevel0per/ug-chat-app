@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyB2tzfFkbjurwGJUek6RUUZkf0t6_WhSaI</string>
+	<string>AIzaSyC14QlGL0D1inEeRc4AGsq-UDGiLtFz-v0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>548924551409</string>
+	<string>994158340091</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.ugChatApp</string>
 	<key>PROJECT_ID</key>
-	<string>ug-chat-app-992b3</string>
+	<string>ug-chat-app-7a8ff</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ug-chat-app-992b3.firebasestorage.app</string>
+	<string>ug-chat-app-7a8ff.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:548924551409:ios:3746290d37f21a69a6f950</string>
+	<string>1:994158340091:ios:0fd824232fd2ba82f30d5e</string>
 </dict>
 </plist>

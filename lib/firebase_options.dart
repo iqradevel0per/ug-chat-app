@@ -50,19 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB42TwMUR6vGheqyMfVPely-xdCcPLrhiM',
-    appId: '1:548924551409:android:c1fc743ec3d73b57a6f950',
-    messagingSenderId: '548924551409',
-    projectId: 'ug-chat-app-992b3',
-    storageBucket: 'ug-chat-app-992b3.firebasestorage.app',
+    apiKey: 'AIzaSyBlGqlD8Uo8zUQFlWym93zpIqG2l6o119s',
+    appId: '1:994158340091:android:0dd35beb0f88a480f30d5e',
+    messagingSenderId: '994158340091',
+    projectId: 'ug-chat-app-7a8ff',
+    storageBucket: 'ug-chat-app-7a8ff.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB2tzfFkbjurwGJUek6RUUZkf0t6_WhSaI',
-    appId: '1:548924551409:ios:3746290d37f21a69a6f950',
-    messagingSenderId: '548924551409',
-    projectId: 'ug-chat-app-992b3',
-    storageBucket: 'ug-chat-app-992b3.firebasestorage.app',
+    apiKey: 'AIzaSyC14QlGL0D1inEeRc4AGsq-UDGiLtFz-v0',
+    appId: '1:994158340091:ios:0fd824232fd2ba82f30d5e',
+    messagingSenderId: '994158340091',
+    projectId: 'ug-chat-app-7a8ff',
+    storageBucket: 'ug-chat-app-7a8ff.firebasestorage.app',
     iosBundleId: 'com.example.ugChatApp',
   );
+
 }

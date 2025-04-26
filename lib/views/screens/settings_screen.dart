@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ug_chat_app/controllers/auth_controller.dart';
 import 'package:ug_chat_app/views/screens/editprofile_screen.dart';
+import 'package:ug_chat_app/views/screens/home_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+  SettingsScreen({super.key});
+  var controller = Get.put(
+    AuthController(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -11,46 +16,22 @@ class SettingsScreen extends StatelessWidget {
       backgroundColor: Color(0xffDDE6E7),
       appBar: AppBar(
         backgroundColor: Color(0xffDDE6E7),
-        leading: IconButton(
-          onPressed: () {
-            //Get.back();
-          },
-          icon: Icon(
-            Icons.arrow_back,
-            size: 30,
-          ),
-        ),
+        //leading: IconButton(
+        // onPressed: () {
+        //    Get.to(
+        //    () => HomeScreen(),
+        //    );
+        //    },
+        //   icon: Icon(
+        //     Icons.arrow_back,
+        //      size: 25,
+        //  ),
+        // ),
         actions: [
           PopupMenuButton(
             icon: Icon(Icons.more_vert),
-            color: Color(0xff8FA5AA),
+            color: Colors.white,
             itemBuilder: (context) => [
-              PopupMenuItem(
-                child: Row(
-                  children: [
-                    Image.asset(
-                      "assets/images/Forward Arrow.png",
-                      width: 40,
-                      height: 25,
-                    ),
-                    // Icon(
-                    //  Icons.download_done_sharp,
-                    //  size: 30,
-                    //  color: Colors.black,
-                    // ),
-                    SizedBox(width: 0),
-                    Text(
-                      "Share",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff000000),
-                        fontFamily: "Roboto",
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               PopupMenuItem(
                 child: GestureDetector(
                   onTap: () {
@@ -78,45 +59,29 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               PopupMenuItem(
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.block,
-                      size: 25,
-                      color: Colors.black,
-                    ),
-                    SizedBox(width: 5),
-                    Text(
-                      "Block User",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff000000),
-                        fontFamily: "Roboto",
+                child: GestureDetector(
+                  onTap: () async {
+                    // await controller.signOutMethod();
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.logout,
+                        size: 25,
+                        color: Colors.black,
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              PopupMenuItem(
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.dock_outlined,
-                      size: 25,
-                      color: Colors.black,
-                    ),
-                    SizedBox(width: 5),
-                    Text(
-                      "Report User",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff000000),
-                        fontFamily: "Roboto",
+                      SizedBox(width: 5),
+                      Text(
+                        "Log Out",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff000000),
+                          fontFamily: "Roboto",
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -127,7 +92,7 @@ class SettingsScreen extends StatelessWidget {
           // ),
         ],
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Image.asset(
@@ -157,7 +122,8 @@ class SettingsScreen extends StatelessWidget {
             SizedBox(height: 20),
             Center(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 25),
+                padding: EdgeInsets.symmetric(vertical: 4),
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 //height: 55,
                 //width: 350,
                 decoration: BoxDecoration(
@@ -166,30 +132,26 @@ class SettingsScreen extends StatelessWidget {
                 child: Row(children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.notifications),
+                    icon: Icon(Icons.person_3),
                   ),
                   //SizedBox(width: 5),
                   Text(
-                    "Mute notification",
+                    "Invite a friends",
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: 15,
                       fontWeight: FontWeight.w500,
                       color: Color(0xff000000),
                       fontFamily: "Roboto",
                     ),
                   ),
-                  SizedBox(width: 150),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.radio_button_off_outlined))
                 ]),
               ),
             ),
             SizedBox(height: 5),
             Center(
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                padding: EdgeInsets.symmetric(vertical: 4),
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 //height: 55,
                 //width: 350,
                 decoration: BoxDecoration(
@@ -199,87 +161,19 @@ class SettingsScreen extends StatelessWidget {
                 child: Row(children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.music_note),
+                    icon: Icon(Icons.mobile_screen_share_sharp),
                   ),
                   //SizedBox(width: 5),
                   Text(
-                    "Custom notification",
+                    "App Updates",
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: 15,
                       fontWeight: FontWeight.w500,
                       color: Color(0xff000000),
                       fontFamily: "Roboto",
                     ),
                   ),
-                  SizedBox(width: 140),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.library_music_outlined))
                 ]),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 20, right: 25, left: 25),
-              //padding: EdgeInsets.symmetric(horizontal: 120),
-              decoration: BoxDecoration(
-                color: Color(0xff6C6D6D6),
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    child: Text(
-                      "Muture Friends",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xff000000),
-                        fontFamily: "Roboto",
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    //height: 300,
-                    //width: double.infinity,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: 4,
-                      scrollDirection: Axis.vertical,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(
-                              top: 0, bottom: 20, right: 25, left: 25),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/Ellipse 28.png",
-                                height: 50,
-                                width: 50,
-                              ),
-                              SizedBox(width: 8),
-                              Text(
-                                "Lukas",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xff000000),
-                                  fontFamily: "Roboto",
-                                ),
-                              ),
-                              SizedBox(width: 150),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.mark_email_read_rounded))
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
               ),
             ),
           ],
